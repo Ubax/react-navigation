@@ -448,6 +448,13 @@ export function useHeaderConfigProps({
     </>
   );
 
+  let userInterfaceStyle: ScreenStackHeaderConfigProps['experimental_userInterfaceStyle'] =
+    dark ? 'dark' : 'light';
+
+  if (headerTransparent) {
+    userInterfaceStyle = undefined;
+  }
+
   return {
     backButtonInCustomView,
     backgroundColor: headerBackgroundColor,
@@ -487,6 +494,6 @@ export function useHeaderConfigProps({
     children,
     headerLeftBarButtonItems: processBarButtonItems(leftItems, colors, fonts),
     headerRightBarButtonItems: processBarButtonItems(rightItems, colors, fonts),
-    experimental_userInterfaceStyle: dark ? 'dark' : 'light',
+    experimental_userInterfaceStyle: userInterfaceStyle,
   } as const;
 }
